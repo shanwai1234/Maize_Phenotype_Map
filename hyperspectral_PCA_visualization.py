@@ -9,7 +9,7 @@ from matplotlib import cm
 ##############################Hyperspectral Image PCA Visualization#####################################################################################################################
 ##############################Notice: Since all pixels were analyzed at once, more Images to be analyzed, expotential time will be cost !!!#############################################
 # Copy any PlantID folder you are interested to 'test_HYP'
-mfold = 'test_HYP'
+mfold = sys.argv[1]
 
 # Create function PCA2 to generate first three PC coefficents for all analyzed image data
 def PCA2(data, dims_rescaled_data=3):
@@ -50,8 +50,8 @@ def plot_pca(data):
 def rmstem(p705,p750,upper_bound,bottom_bound,left_bound,right_bound):
 	mypic = []
 	control = []
-	myl = np.shape(pic1)[0]
-	myw = np.shape(pic1)[1]
+	myl = np.shape(p705)[0]
+	myw = np.shape(p705)[1]
 	y1 = int(upper_bound)
 	y2 = int(bottom_bound)
 	x1 = int(left_bound)
@@ -98,7 +98,7 @@ kdict = {}
 # build a library to include file~wavelength information
 for line in sh:
 	new = line.strip().split('\t')
-	kdict[new[4]] = new[0]
+	kdict[new[-1]] = new[0]
 sh.close()
 
 # because of no germination in most of first three days, we just skip them to speed up running the code
@@ -111,7 +111,7 @@ whole = os.listdir(mfold)
 mdict = {}
 tlist = []
 # The date you want to visualize, e.g. Day_028
-date = sys.argv[1]
+date = sys.argv[2]
 for j1 in whole:
 	tlist.append(j1)
 	for i1 in os.listdir('{0}/{1}/HYP SV 90/'.format(mfold,j1)):
@@ -120,7 +120,7 @@ for j1 in whole:
 		# in every folder, the images of 35_0_0.png and 45_0_0.png should be used firstly in order to subtract the plant area
 		if True:
 			m705 = cv2.imread('{0}/{1}/HYP SV 90/{2}/35_0_0.png'.format(mfold,j1,i1))
-			m705 = cv2.imread('{0}/{1}/HYP SV 90/{2}/45_0_0.png'.format(mfold,j1,i1))
+			m750 = cv2.imread('{0}/{1}/HYP SV 90/{2}/45_0_0.png'.format(mfold,j1,i1))
 			# converting plant images from RGB to GRAY channel
 			tm705 = cv2.cvtColor(m705,cv2.COLOR_BGR2GRAY)
 			tm750 = cv2.cvtColor(m750,cv2.COLOR_BGR2GRAY)		
@@ -128,7 +128,7 @@ for j1 in whole:
 			tm750 = tm750.astype(np.float)
 			# defining the interested area that we are going to analyze the plant
 			rmg,back = rmstem(tm705,tm750,45,445,30,273)
-			for i in os.listdir(subset):
+			for i in subset:
 				# first two images are not useful and just skip them
 				if i == '0_0_0.png':continue
 				if i == '1_0_0.png':continue
@@ -139,19 +139,13 @@ for j1 in whole:
 				t = t.astype(np.float)
 				t1 = t[:,:,0]
 				# multiply each files in the folder with the binarized image. For each pixel, dividing 255 to make each pixel in 0~1 
-				# t2 = np.multiply(t1,rmg)
 				cint = NP(back,t1)
-				total = PCA(rmg,cint,t1,plant)
+				total = PCA(rmg,cint,t1,j1)
 				if name not in mdict:
 					mdict[name] = {}
 				mdict[name].update(total)
 			wavelengths = list(mdict)
                 	pixels = list(mdict[wavelengths[0]])
-			out = open('test_purpleness/{0}'.format(full),'w')
-			for i in range(2,245):
-				i = str(i)
-				if i not in mdict:continue
-				out.write(kdict[i]+','+','.join(map(str,mdict[i]))+'\n')
 		else:
 			print j1
 for p in pixels:
@@ -165,9 +159,6 @@ myxvals = {}
 myyvals = {}
 mycvals = {}
 myplant = set([])
-fig = plt.figure()
-ax = fig.add_subplot('111')
-ax.set_title('myplant')
 for x in range(3):
 	mytitle = "PC {0}".format(x+1)
 	for name,val in zip(pixels,data_resc[:,x]):
@@ -187,12 +178,6 @@ myxtick = []
 myxname = []
 ncvals = {}
 for i in myplant:
-	xlist1 = []
-	ylist1 = []
-	xlist2 = []
-	ylist2 = []
-	xlist3 = []
-	ylist3 = []
 	myxname.append(i)
 	pc0 = 'PC0'+'-'+i
 	pc1 = 'PC1'+'-'+i
@@ -224,27 +209,19 @@ for i in myplant:
 	pc0 = 'PC0'+'-'+i
 	nx = max(myxvals[pc0])-min(myxvals[pc0])
 	ny = max(myyvals[pc0])-min(myyvals[pc0])
-	nlist = []
 	for ii in range(nx):
 		x = ii + min(myxvals[pc0])
-		n = []
 		for jj in range(ny):
 			y = jj + min(myyvals[pc0])
 			pos = str(y)+'-'+str(x)
 			if pos in ncvals[i]:
-				n.append(ncvals[i][pos])
 				clist = ncvals[i][pos]
 				xvals.append(ii+num*250)
 				yvals.append(jj)
 				cvals.append((clist[0],clist[1],clist[2]))
-			else:
-				n.append([255,255,255])
-		nlist.append(n)
 	myxtick.append(np.median(xvals))
 	myxname.append(i)
 	num += 1
-	mypic = np.array(nlist)
-	cv2.imwrite('{0}.jpg'.format(i),mypic)
 	ax.scatter(xvals,yvals,color=cvals)
 ax.set_xticks(myxtick)
 ax.set_xticklabels(myxname)

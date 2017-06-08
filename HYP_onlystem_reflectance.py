@@ -6,7 +6,7 @@ import sys
 ####################### Hyperspectral Image Analysis For Only Stem ##########################################################
 ###Should follow the data structure of image data: Genotype --> Replicates (Plants) --> HYP folder --> Days --> Images captured by each wavelength###
 # the folder name containing image data sets in our defined data structure
-mfold = 'Maize_diversity_iplant_version'
+mfold = sys.argv[1]
 # create a funtion to generate the outline of plant without stem area but keep the leaf area
 def rmstem(pic1,pic2,upper_bound,bottom_bound,left_bound,right_bound):
 	mypic = []
@@ -59,7 +59,7 @@ kdict = {}
 # build a library to include file~wavelength information
 for line in sh:
 	new = line.strip().split('\t')
-	kdict[new[4]] = new[0]
+	kdict[new[-1]] = new[0]
 sh.close()
 
 # because of no germination in most of first three days, we just skip them to speed up running the code
@@ -69,8 +69,8 @@ for i in range(1,4):
 
 whole = os.listdir(mfold)
 				
-out = open('HYP_reflectance_maize_diversity.txt','w')
-error = open('HYP_reflectance_maize_diversity_errorimage.txt','w')
+out = open('HYP_onlystem_reflectance_maize_diversity.txt','w')
+error = open('HYP_onlystem_reflectance_maize_diversity_errorimage.txt','w')
 for j1 in whole:
 	if j1 == 'Genotype_ZL022':continue
 	for i1 in os.listdir('{0}/{1}'.format(mfold,j1)):
@@ -104,7 +104,7 @@ for j1 in whole:
 							avg = np.median(total)
 							mdict[name] = avg
 						except:
-							error.write(i+'\n')
+							error.write(i1+'\t'+d1+'\t'+i+'\n')
 					for i in range(2,245):
 						i = str(i)
 						if i not in mdict:
@@ -112,7 +112,7 @@ for j1 in whole:
 						else:
 							nlist.append(str(mdict[i]))
 				except:
-					error.write(j1+'\n')
+					error.write(i1+'\t'+d1+'\n')
 				out.write('\t'.join(nlist)+'\n')
 out.close()
 error.close()

@@ -5,7 +5,7 @@ import os
 #######################RGB Image Data Analysis############################################################
 ###Should follow the data structure of image data: Genotype --> Replicates (Plants) --> Different Views --> Image captured by each Day###
 # mfold defines the folder name that stores the data in our data structure
-mfold = 'Maize_diversity_iplant_version'
+mfold = sys.argv[1]
 # The ratio between pixels further zoom level and closer zoom level is 1:2.02, each pixel in closer zoom level is 0.746mm. This script generates values based on pixel counts.
 # binary function is going to extract green pixels by defined threshold of (2*G)/(R+B) > 1.15
 def binary(pic,upper,bottom,left,right):
