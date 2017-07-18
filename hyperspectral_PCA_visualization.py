@@ -192,10 +192,10 @@ for i in myplant:
 		name = str(myyvals[pc0][a])+'-'+str(myxvals[pc0][a])
 		if name not in ncvals[i]:
 			ncvals[i][name] = []
-		# normalize PCA coefficients for each plant of each genotype by the formula: new_value = ((old_value - old_min)/(old_max - old_min))*(new_max - new_min)+new_min 
-		ncvals[i][name].append((mycvals[pc0][a]-min(mycvals[pc0]))/(max(mycvals[pc0]-min(mycvals[pc0]))))
-		ncvals[i][name].append((mycvals[pc1][a]-min(mycvals[pc1]))/(max(mycvals[pc1]-min(mycvals[pc1]))))
-		ncvals[i][name].append((mycvals[pc2][a]-min(mycvals[pc2]))/(max(mycvals[pc2]-min(mycvals[pc2]))))
+		# normalize PCA components for each plant of each genotype by the formula: normalized_value = (value-min_value)/(max_value-min_value) 
+		ncvals[i][name].append((mycvals[pc0][a]-min(mycvals[pc0]))/(max(mycvals[pc0])-min(mycvals[pc0])))
+		ncvals[i][name].append((mycvals[pc1][a]-min(mycvals[pc1]))/(max(mycvals[pc1])-min(mycvals[pc1])))
+		ncvals[i][name].append((mycvals[pc2][a]-min(mycvals[pc2]))/(max(mycvals[pc2])-min(mycvals[pc2])))
 
 n = 0
 plt.show()
