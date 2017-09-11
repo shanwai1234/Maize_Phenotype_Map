@@ -38,8 +38,8 @@ def call_numeric(thresh):
 	hh = 0
 	ww = 0
 	aa = 0
-	contours,hierarchy = cv2.findContours(thresh, 1, 2)
 	areas = []
+	contours,hierarchy = cv2.findContours(thresh, 1, 2)
 	for c in contours:
 		areas.append(cv2.contourArea(c))
 	people = np.array(contours)
@@ -52,7 +52,7 @@ def call_numeric(thresh):
 	hh = str(h)
 	ww = str(w)
 	aa = str(cv2.contourArea(hull))
-	return hh,ww,aa
+	return hh,ww,aa,areas
 
 whole = os.listdir(mfold)
 
@@ -93,16 +93,21 @@ for j1 in sorted(whole):
 						thresh = binary(imgreen,50,1450,815,1780)
 					cv2.imwrite('test.jpg',thresh)
 					thresh = cv2.imread("test.jpg",cv2.CV_LOAD_IMAGE_GRAYSCALE)
-					h,w,area = call_numeric(thresh)
+					h,w,area,areas = call_numeric(thresh)
+					total = max(areas0)
+					k = areas0.index(total)
+					del areas0[k]
+					for i in areas0:
+						total -= i
 					nlist.append(myview)
 					if date in far:
 						nlist.append(str(float(h)*2.02))
 						nlist.append(str(float(w)*2.02))
-						nlist.append(str(float(area)*2.02*2.02))
+						nlist.append(str(float(total)*2.02*2.02))
 					else:
 						nlist.append(h)
 						nlist.append(w)
-						nlist.append(area)
+						nlist.append(total)
 				except:
 					nlist.extend(na)
 					error.write(j1+':'+i1+':'+v+':'+d1+'\n')
