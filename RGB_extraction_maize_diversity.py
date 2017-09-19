@@ -72,7 +72,7 @@ out = open('RGB_extraction.csv','w')
 # create this file to trace some image files that can not load correctly to make sure the whole loop can go correctly
 error = open('RGB_extraction_error.csv','w')
 
-out.write('PlantID'+'\t'+'Date'+'\t'+'View'+'\t'+'Plant Height'+'\t'+'Plant Width'+'\t'+'Convex Hull Area'+'\n')
+out.write('PlantID'+'\t'+'Date'+'\t'+'View'+'\t'+'Plant Height'+'\t'+'Plant Width'+'\t'+'Projected Plant Area'+'\n')
 views = ['VIS SV 0','VIS SV 90']
 for j1 in sorted(whole):
 	if j1 == 'Genotype_ZL022':continue
