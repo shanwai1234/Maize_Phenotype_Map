@@ -103,7 +103,7 @@ for j1 in sorted(whole):
 					if date in far:
 						nlist.append(str(float(h)*2.02))
 						nlist.append(str(float(w)*2.02))
-						nlist.append(str(float(total)*2.02*2.02))
+						nlist.append(str(float(total)))
 					else:
 						nlist.append(h)
 						nlist.append(w)
