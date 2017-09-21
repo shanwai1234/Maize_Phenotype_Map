@@ -41,6 +41,14 @@ Data Structure: folder name -> Plant ID -> Camera Types (HYP) -> Day folders -> 
 
 Demo: Python hyperspectral_PCA_visualization.py folder_name Day_030
 
-5> wavelength_foldid.txt
+5> FLUO_extraction_maize_diversity.py
+
+Extracting average and sum of fluorescence intensity in side views and top view
+
+Demo: Python FLUO_extraction_maize_diversity.py folder_name
+
+Output file is Fluo_extraction.csv
+
+6> wavelength_foldid.txt
 
 The file corresponds each image file in hyperspectral folder to each specific wavelength.
