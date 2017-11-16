@@ -93,7 +93,7 @@ for j1 in sorted(whole):
 						thresh = binary(imgreen,50,1450,815,1780)
 					cv2.imwrite('test.jpg',thresh)
 					thresh = cv2.imread("test.jpg",cv2.CV_LOAD_IMAGE_GRAYSCALE)
-					h,w,area,areas = call_numeric(thresh)
+					h,w,area,areas0 = call_numeric(thresh)
 					total = max(areas0)
 					k = areas0.index(total)
 					del areas0[k]
