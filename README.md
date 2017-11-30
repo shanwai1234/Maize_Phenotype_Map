@@ -3,6 +3,8 @@ All of four scripts were written in Python to process RGB and hyperspectral imag
 
 Note: Please ignore warning messages produced during the image analysis, which are caused by tiny or no size of interested areas, or image generations. But the whole extraction process can go forwards without interruption. Corresponding error files are created to keep information of which image produces warning messages.
 
+Please cite the paper "Zhikai Liang, Piyush Pandey, Vincent Stoerger, Yuhang Xu, Yumou Qiu, Yufeng Ge, James C. Schnable; Conventional and hyperspectral time-series imaging of maize lines widely used in field trials, GigaScience, gix117, https://doi.org/10.1093/gigascience/gix117" when use codes in this repository.
+ 
 1> RGB_extraction_maize_diversity.py
 
 Extracting numeric values of plant height, width, area in RGB images in pixel counts.
