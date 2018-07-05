@@ -6,7 +6,7 @@ Note: Please ignore warning messages produced during the image analysis, which a
 ## Citation:
 Please cite the paper "Zhikai Liang, Piyush Pandey, Vincent Stoerger, Yuhang Xu, Yumou Qiu, Yufeng Ge, James C. Schnable; Conventional and hyperspectral time-series imaging of maize lines widely used in field trials, GigaScience, gix117, https://doi.org/10.1093/gigascience/gix117" when use codes in this repository.
  
-### Numeric values extracted from RGB images. 
+### 1) Numeric values extracted from RGB images. 
 
 RGB_extraction_maize_diversity.py
 
@@ -18,7 +18,7 @@ Demo: Python RGB_extraction_maize_diversity.py folder_name
 
 Output file is RGB_extraction.csv
 
-### Numeric values extracted from stalk only area of plants in hyperspectral images. 
+### 2) Numeric values extracted from stalk only area of plants in hyperspectral images. 
 
 HYP_onlystem_reflectance.py
 
@@ -30,7 +30,7 @@ Demo: Python HYP_onlystem_reflectance.py folder_name
 
 Output file is HYP_onlystem_reflectance_maize_diversity.txt
 
-### Numeric values extracted from leaf areas without stalk of plants in hyperspectral images. 
+### 3) Numeric values extracted from leaf areas without stalk of plants in hyperspectral images. 
 
 HYP_nostem_reflectance.py
 
@@ -42,7 +42,7 @@ Demo: Python HYP_nostem_reflectance.py
 
 Output file is HYP_nostem_reflectance_maize_diversity.txt
 
-### PCA analysis of plant pixels in hyperspectral images.
+### 4) PCA analysis of plant pixels in hyperspectral images.
 
 hyperspectral_PCA_visualization.py
 
@@ -52,7 +52,7 @@ Data Structure: folder name -> Plant ID -> Camera Types (HYP) -> Day folders -> 
 
 Demo: Python hyperspectral_PCA_visualization.py folder_name Day_030
 
-### Numeric values extracted from fluorescent images. 
+### 5) Numeric values extracted from fluorescent images. 
 
 FLUO_extraction_maize_diversity.py
 
@@ -62,7 +62,7 @@ Demo: Python FLUO_extraction_maize_diversity.py folder_name
 
 Output file is Fluo_extraction.csv
 
-### The file to correspond band number with actual wavelength. 
+### 6) The file to correspond band number with actual wavelength. 
 
 wavelength_foldid.txt
 
