@@ -1,4 +1,4 @@
-## Maize_Phenotype_Map ![](https://img.shields.io/badge/Release-v1.0.1-blue.svg)
+## Maize_Phenotype_Map ![](https://img.shields.io/badge/Release-v1.0.1-blue.svg)![](https://img.shields.io/pypi/l/Django.svg)
 All of four scripts were written in Python to process RGB and hyperspectral image data. These scripts were run under command line of Linux Mint 17.2 System with dependencies of OpenCV module 2.4.8, Numpy >1.5, CMake > 2.6, GCC > 4.4.x and Scipy 0.13.X. 
 
 Note: Please ignore warning messages produced during the image analysis, which are caused by tiny or no size of interested areas, or image generations. But the whole extraction process can go forwards without interruption. Corresponding error files are created to keep information of which image produces warning messages.
