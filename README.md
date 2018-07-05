@@ -1,12 +1,12 @@
-### Maize_Phenotype_Map [![](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch)]
+## Maize_Phenotype_Map ![](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch)
 All of four scripts were written in Python to process RGB and hyperspectral image data. These scripts were run under command line of Linux Mint 17.2 System with dependencies of OpenCV module 2.4.8, Numpy >1.5, CMake > 2.6, GCC > 4.4.x and Scipy 0.13.X. 
 
 Note: Please ignore warning messages produced during the image analysis, which are caused by tiny or no size of interested areas, or image generations. But the whole extraction process can go forwards without interruption. Corresponding error files are created to keep information of which image produces warning messages.
 
-### Citation:
+## Citation:
 Please cite the paper "Zhikai Liang, Piyush Pandey, Vincent Stoerger, Yuhang Xu, Yumou Qiu, Yufeng Ge, James C. Schnable; Conventional and hyperspectral time-series imaging of maize lines widely used in field trials, GigaScience, gix117, https://doi.org/10.1093/gigascience/gix117" when use codes in this repository.
  
-# Numeric values extracted from RGB images. 
+### Numeric values extracted from RGB images. 
 
 RGB_extraction_maize_diversity.py
 
@@ -18,7 +18,7 @@ Demo: Python RGB_extraction_maize_diversity.py folder_name
 
 Output file is RGB_extraction.csv
 
-# Numeric values extracted from stalk only area of plants in hyperspectral images. 
+### Numeric values extracted from stalk only area of plants in hyperspectral images. 
 
 HYP_onlystem_reflectance.py
 
@@ -30,7 +30,7 @@ Demo: Python HYP_onlystem_reflectance.py folder_name
 
 Output file is HYP_onlystem_reflectance_maize_diversity.txt
 
-# Numeric values extracted from leaf areas without stalk of plants in hyperspectral images. 
+### Numeric values extracted from leaf areas without stalk of plants in hyperspectral images. 
 
 HYP_nostem_reflectance.py
 
@@ -42,7 +42,7 @@ Demo: Python HYP_nostem_reflectance.py
 
 Output file is HYP_nostem_reflectance_maize_diversity.txt
 
-# PCA analysis of plant pixels in hyperspectral images.
+### PCA analysis of plant pixels in hyperspectral images.
 
 hyperspectral_PCA_visualization.py
 
@@ -52,7 +52,7 @@ Data Structure: folder name -> Plant ID -> Camera Types (HYP) -> Day folders -> 
 
 Demo: Python hyperspectral_PCA_visualization.py folder_name Day_030
 
-# Numeric values extracted from fluorescent images. 
+### Numeric values extracted from fluorescent images. 
 
 FLUO_extraction_maize_diversity.py
 
@@ -62,7 +62,7 @@ Demo: Python FLUO_extraction_maize_diversity.py folder_name
 
 Output file is Fluo_extraction.csv
 
-# The file to correspond band number with actual wavelength. 
+### The file to correspond band number with actual wavelength. 
 
 wavelength_foldid.txt
 
