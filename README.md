@@ -14,8 +14,9 @@ Extracting numeric values of plant height, width, area in RGB images in pixel co
 
 Data Structure: folder name -> Genotype ID -> Plant ID -> Camera Types -> RGB Image in Day
 
-Demo: Python RGB_extraction_maize_diversity.py folder_name
-
+```bash
+python RGB_extraction_maize_diversity.py folder_name
+```
 Output file is RGB_extraction.csv
 
 ### 2) Numeric values extracted from stalk only area of plants in hyperspectral images. 
@@ -26,8 +27,9 @@ Extracting median reflectance value of pixels in the plant stem area through seg
 
 Data Structure: folder name -> Genotype ID -> Plant ID -> Camera Types (HYP) -> Day folders -> Image in 243 wavelengths
 
-Demo: Python HYP_onlystem_reflectance.py folder_name
-
+```bash
+python HYP_onlystem_reflectance.py folder_name
+```
 Output file is HYP_onlystem_reflectance_maize_diversity.txt
 
 ### 3) Numeric values extracted from leaf areas without stalk of plants in hyperspectral images. 
@@ -38,8 +40,9 @@ Extracting median reflectance value of pixels in the plant area without stem thr
 
 Data Structure: folder name -> Genotype ID -> Plant ID -> Camera Types (HYP) -> Day folders -> Image in 243 wavelengths
 
-Demo: Python HYP_nostem_reflectance.py
-
+```bash
+python HYP_nostem_reflectance.py
+```
 Output file is HYP_nostem_reflectance_maize_diversity.txt
 
 ### 4) PCA analysis of plant pixels in hyperspectral images.
@@ -50,16 +53,18 @@ Restoring and visualizing the entire plant area by consiering first three PC coe
 
 Data Structure: folder name -> Plant ID -> Camera Types (HYP) -> Day folders -> Image in 243 wavelengths
 
-Demo: Python hyperspectral_PCA_visualization.py folder_name Day_030
-
+```bash
+python hyperspectral_PCA_visualization.py folder_name Day_030
+```
 ### 5) Numeric values extracted from fluorescent images. 
 
 FLUO_extraction_maize_diversity.py
 
 Extracting average and sum of fluorescence intensity in side views and top view
 
-Demo: Python FLUO_extraction_maize_diversity.py folder_name
-
+```bash
+python FLUO_extraction_maize_diversity.py folder_name
+```
 Output file is Fluo_extraction.csv
 
 ### 6) The file to correspond band number with actual wavelength. 
