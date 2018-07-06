@@ -69,6 +69,7 @@ Output file is Fluo_extraction.csv
 
 ### 6) The file to correspond band number with actual wavelength. 
 
+```bash
 wavelength_foldid.txt
-
+```
 The file corresponds each image file in hyperspectral folder to each specific wavelength.
